@@ -6,40 +6,88 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
-            background-color: #fff0f5;
-            margin-top: 50px;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to bottom right, #ffccd5, #ff99cc);
+            overflow: hidden;
         }
 
-        img {
+        h2 {
+            margin-top: 40px;
+            color: #d63384;
+        }
+
+        /* Heart Shape */
+        .heart {
+            position: relative;
             width: 300px;
+            height: 300px;
+            margin: 50px auto;
+            transform: rotate(-45deg);
+            background-color: #ff4d6d;
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: #ff4d6d;
+            border-radius: 50%;
+        }
+
+        .heart:before {
+            top: -150px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 150px;
+            top: 0;
+        }
+
+        /* Image inside heart */
+        .heart img {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
             border-radius: 20px;
+            transform: rotate(45deg);
+            top: 40px;
+            left: 40px;
             cursor: pointer;
             transition: transform 0.3s;
-        }
-
-        img:hover {
-            transform: scale(1.05);
         }
 
         #message {
             display: none;
             font-size: 28px;
-            color: #ff1493;
+            color: white;
             margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-    <h2>Click the Image ❤️</h2>
+    <h2>Click the Heart ❤️</h2>
 
-    <!-- Replace mom-son.jpg with your uploaded image name -->
-    <img src="mom-son.jpg" onclick="showLove()" alt="Mom and Son">
+    <div class="heart">
+        <!-- Replace mom-son.jpg with your image name -->
+        <img src="mom-son.jpg" id="loveImage" onclick="growImage()">
+    </div>
 
     <div id="message">I Love You Rithvik ❤️</div>
 
     <script>
-        function showLove() {
+        let scale = 1;
+
+        function growImage() {
+            scale += 0.2;  // Increase size every click
+            document.getElementById("loveImage").style.transform =
+                "rotate(45deg) scale(" + scale + ")";
+            
             document.getElementById("message").style.display = "block";
         }
     </script>
