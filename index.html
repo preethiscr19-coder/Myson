@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Could you spend money on yourself</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        h1 {
+            color: #d6336c;
+            margin-bottom: 40px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+        #noBtn {
+            background-color: #ccc;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Could you spend money on yourself? ❤️</h1>
+    <button id="yesBtn" style="top: 60%; left: 40%;">Yes</button>
+    <button id="noBtn" style="top: 60%; left: 55%;">No</button>
+
+    <script>
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+
+        let yesSize = 18; // initial font size in px
+
+        yesBtn.addEventListener("click", () => {
+            alert("Yay! ❤️ You made my day! then take me to jewellery shop to buy you something special");
+        });
+
+        yesBtn.addEventListener("mouseover", () => {
+            yesSize += 5;
+            yesBtn.style.fontSize = yesSize + "px";
+            yesBtn.style.padding = (10 + yesSize / 5) + "px " + (20 + yesSize / 5) + "px";
+        });
+
+        noBtn.addEventListener("mouseover", () => {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        });
+    </script>
+
+</body>
+</html>
+
+
